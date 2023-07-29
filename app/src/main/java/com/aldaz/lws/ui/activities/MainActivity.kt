@@ -1,7 +1,8 @@
-package com.aldaz.lws
+package com.aldaz.lws.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.aldaz.lws.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

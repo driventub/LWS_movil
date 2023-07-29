@@ -1,4 +1,6 @@
 package com.aldaz.lws.logic.data
 
-class LwsChars {
-}
+import java.math.BigDecimal
+
+
+data class LwsChars(var id: Int, var valor: BigDecimal)
