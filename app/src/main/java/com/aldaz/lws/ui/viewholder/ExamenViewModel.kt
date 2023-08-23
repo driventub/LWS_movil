@@ -8,13 +8,14 @@ import androidx.lifecycle.viewModelScope // Import viewModelScope
 import com.aldaz.lws.data.connections.ConnectionApi
 import com.aldaz.lws.data.endpoint.Endpoint
 import com.aldaz.lws.data.entitties.lws.Examen
+import com.aldaz.lws.ui.adapters.LwsAdapter
 import kotlinx.coroutines.launch // Import launch from kotlinx.coroutines
 
 class ExamenesViewModel : ViewModel() {
 
     private val _examenesList = MutableLiveData<List<Examen>>()
     val examenesList: LiveData<List<Examen>> = _examenesList
-
+    val adapter : LwsAdapter(emptyList()){}
     fun fetchExamenes() {
         viewModelScope.launch { // Use viewModelScope.launch
             try {
