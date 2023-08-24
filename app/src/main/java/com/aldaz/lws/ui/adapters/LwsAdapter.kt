@@ -1,20 +1,22 @@
 package com.aldaz.lws.ui.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.aldaz.lws.data.entitties.lws.DatosItem
 import com.aldaz.lws.data.entitties.lws.Examen
 import com.aldaz.lws.databinding.ActivityMainBinding
 import com.aldaz.lws.databinding.DatosBinding
+import com.aldaz.lws.ui.activities.DatosActivity
 import com.aldaz.lws.ui.viewholder.ExamenesViewModel
 
 
 class LwsAdapter(
     private var examenes: List<Examen>,
-    private var fnClick: (Examen) -> Unit
+    private var fnClick: (Examen) -> Unit,
+    private val examenesViewModel: ExamenesViewModel
 ) : RecyclerView.Adapter<LwsAdapter.ExamenViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExamenViewHolder {
@@ -39,7 +41,9 @@ class LwsAdapter(
 
             itemView.setOnClickListener {
                 fnClick(examen)
-                // Implement your API fetching logic here when an item is clicked
+
+                examenesViewModel.fetchDatos(examen.numero)
+
             }
         }
     }
