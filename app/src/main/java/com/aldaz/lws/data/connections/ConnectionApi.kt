@@ -8,8 +8,8 @@ object ConnectionApi {
         Lws
     }
 
-
-    private val API_LWS="http://127.0.0.1:8080/API/V1/Sema"
+//  la direccion ip tiene que ser de donde se esta corriendo
+    private val API_LWS="http://192.168.100.7:8080/"
     private fun getConnection(base: String): Retrofit{
         var retrofit = Retrofit.Builder()
             .baseUrl(API_LWS)
