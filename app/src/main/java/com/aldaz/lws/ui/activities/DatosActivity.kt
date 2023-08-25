@@ -1,13 +1,21 @@
 package com.aldaz.lws.ui.activities
 
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProvider
+import com.aldaz.lws.R
 import com.aldaz.lws.data.connections.ConnectionApi
 import com.aldaz.lws.data.connections.ConnectionApi.getService
 
@@ -65,7 +73,12 @@ class DatosActivity : AppCompatActivity() {
     }
 
     private fun enviar(){
+
+
         binding.capture.setOnClickListener(){
+            createNotificationChannel()
+            sendNotificaction()
+
             val bitmap = Bitmap.createBitmap(
                 binding.recyclerView.width,
                 binding.recyclerView.height,
@@ -85,6 +98,35 @@ class DatosActivity : AppCompatActivity() {
             sendIntent.type = "image/*"
             sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             startActivity(sendIntent)
+        }
+    }
+
+    val CHANNEL : String = "Notificaciones"
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Variedades"
+            val descriptionText = "Varias notificaciones simples variadas"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL, name, importance).apply {
+                description = descriptionText
+            }
+
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    fun sendNotificaction(){
+        val noti = NotificationCompat.Builder(this, CHANNEL )
+        noti.setContentTitle("Whatsapp Reporte")
+        noti.setContentText("Se ha generado su reporte de manera exitosa")
+        noti.setSmallIcon(R.drawable.whats)
+        noti.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//        noti.setStyle(NotificationCompat.BigTextStyle().bigText("Se ha generado su reporte de manera exitosa"))
+        with(NotificationManagerCompat.from(this)){
+            notify(1,noti.build())
         }
     }
 
