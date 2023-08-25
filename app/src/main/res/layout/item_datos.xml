@@ -9,10 +9,18 @@
             type="com.aldaz.lws.data.entitties.lws.DatosItem" />
     </data>
 
-    <GridLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
         android:columnCount="6"
+
         tools:context=".DetailsActivity">
 
         <TextView
@@ -25,7 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{datosItem.referencia}"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,4 +63,6 @@
             android:textSize="14sp" />
 
     </GridLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </layout>
