@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aldaz.lws.data.entitties.lws.DatosItem
+import com.aldaz.lws.data.entitties.lws.Examen
 import com.aldaz.lws.databinding.ItemDatosBinding
 
 class DatosAdapter(
-    private val datosItems: List<DatosItem>
+    private var datosItems: List<DatosItem>
 ) : RecyclerView.Adapter<DatosAdapter.DatosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DatosViewHolder {
@@ -31,5 +32,10 @@ class DatosAdapter(
             binding.datosItem = datosItem
             binding.executePendingBindings()
         }
+    }
+
+    fun updateDatos(newDatos: List<DatosItem>) {
+        datosItems = newDatos
+        notifyDataSetChanged()
     }
 }

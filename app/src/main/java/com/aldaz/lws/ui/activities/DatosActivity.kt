@@ -12,6 +12,7 @@ import com.aldaz.lws.data.entitties.lws.DatosItem
 import com.aldaz.lws.databinding.ActivityListaDatosBinding
 import com.aldaz.lws.databinding.DatosBinding
 import com.aldaz.lws.databinding.ItemDatosBinding
+import com.aldaz.lws.ui.adapters.DatosAdapter
 import com.aldaz.lws.ui.viewholder.ExamenesViewModel
 
 
@@ -31,16 +32,21 @@ class DatosActivity : AppCompatActivity() {
     }
 
     private fun buscarExamenPorNumero(){
-        examenesViewModel = ViewModelProvider(this).get(ExamenesViewModel::class.java)
+        val examenNumero = intent.getStringExtra("EXAMEN_NUMERO")
+        examenesViewModel = ViewModelProvider(this)[ExamenesViewModel::class.java]
+
+        val adapter = DatosAdapter(emptyList())
+        binding.recyclerView.adapter = adapter
+        binding.viewModel = examenesViewModel
+        binding.lifecycleOwner = this
 
         // Observe the LiveData for fetched datos
         examenesViewModel.datosList.observe(this) { fetchedDatos ->
-            // Update your UI with the fetchedDatos here
-            // For example, you can set text in TextViews
-
-            // ...and so on
+            adapter.updateDatos(fetchedDatos)
         }
-
+        if (examenNumero != null) {
+            examenesViewModel.fetchDatos(examenNumero)
+        }
 
     }
 
@@ -52,5 +58,7 @@ class DatosActivity : AppCompatActivity() {
             finish() // Optional: Close this activity
         }
     }
+
+
 
 }

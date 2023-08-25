@@ -4,81 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="datosItem"
             type="com.aldaz.lws.data.entitties.lws.DatosItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="6"
         tools:context=".DetailsActivity">
 
         <TextView
-            android:id="@+id/nombreTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{datosItem.nombre}"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/referenciaTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{datosItem.referencia}"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nombreTextView"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/tipoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{datosItem.tipo.toString()}"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nombreTextView"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/valMaxTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(datosItem.valMax)}"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nombreTextView"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/valMinTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(datosItem.valMin)}"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nombreTextView"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="14sp" />
+
         <TextView
-            android:id="@+id/valorTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(datosItem.valor)}"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nombreTextView"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="14sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </GridLayout>
 </layout>
