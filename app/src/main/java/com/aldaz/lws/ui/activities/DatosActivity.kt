@@ -1,8 +1,12 @@
 package com.aldaz.lws.ui.activities
 
+import android.content.ContentValues
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.lifecycle.ViewModelProvider
 import com.aldaz.lws.data.connections.ConnectionApi
 import com.aldaz.lws.data.connections.ConnectionApi.getService
@@ -29,6 +33,7 @@ class DatosActivity : AppCompatActivity() {
 
         buscarExamenPorNumero()
         regresar()
+        enviar()
     }
 
     private fun buscarExamenPorNumero(){
@@ -40,7 +45,7 @@ class DatosActivity : AppCompatActivity() {
         binding.viewModel = examenesViewModel
         binding.lifecycleOwner = this
 
-        // Observe the LiveData for fetched datos
+
         examenesViewModel.datosList.observe(this) { fetchedDatos ->
             adapter.updateDatos(fetchedDatos)
         }
@@ -52,10 +57,34 @@ class DatosActivity : AppCompatActivity() {
 
     private fun regresar(){
         binding.backButton.setOnClickListener() {
-            // Navigate back to MainActivity
+
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish() // Optional: Close this activity
+            finish()
+        }
+    }
+
+    private fun enviar(){
+        binding.capture.setOnClickListener(){
+            val bitmap = Bitmap.createBitmap(
+                binding.recyclerView.width,
+                binding.recyclerView.height,
+                Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(bitmap)
+            binding.recyclerView.draw(canvas)
+
+            val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, ContentValues())
+            val outputStream = contentResolver.openOutputStream(imageUri!!)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            outputStream?.close()
+
+            val sendIntent = Intent(Intent.ACTION_SEND)
+            sendIntent.setPackage("com.whatsapp")
+            sendIntent.putExtra(Intent.EXTRA_STREAM, imageUri)
+            sendIntent.type = "image/*"
+            sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            startActivity(sendIntent)
         }
     }
 
