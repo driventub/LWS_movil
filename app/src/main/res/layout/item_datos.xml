@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{datosItem.tipo.toString()}"
+            android:text="@{datosItem.tipo.nombre}"
             android:textSize="14sp" />
 
         <TextView
@@ -49,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(datosItem.valor)}"
+            app:valorOutOfBounds="@{datosItem}"
             android:textSize="14sp" />
 
     </GridLayout>

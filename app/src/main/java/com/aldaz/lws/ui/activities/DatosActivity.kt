@@ -50,7 +50,7 @@ class DatosActivity : AppCompatActivity() {
             adapter.updateDatos(fetchedDatos)
         }
         if (examenNumero != null) {
-            examenesViewModel.fetchDatos(examenNumero)
+            examenesViewModel.fetchDatos(examenNumero,binding.root)
         }
 
     }

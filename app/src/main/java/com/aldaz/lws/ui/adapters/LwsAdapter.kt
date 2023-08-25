@@ -42,7 +42,7 @@ class LwsAdapter(
             itemView.setOnClickListener {
                 fnClick(examen)
 
-                examenesViewModel.fetchDatos(examen.numero)
+//                examenesViewModel.fetchDatos(examen.numero, binding.root)
 
             }
         }

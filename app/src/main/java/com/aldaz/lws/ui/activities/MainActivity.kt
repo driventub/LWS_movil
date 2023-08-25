@@ -20,7 +20,7 @@
 
             val adapter = LwsAdapter(emptyList(), { clickedExamen ->
                 val examenNumero = clickedExamen.numero
-                viewModel.fetchDatos(examenNumero) // Fetch the data using examenNumero
+//                viewModel.fetchDatos(examenNumero, binding.root) // Fetch the data using examenNumero
 
                 // Navigate to DatosActivity with fetched data
                 val intent = Intent(this, DatosActivity::class.java).apply {
@@ -37,6 +37,6 @@
                 adapter.updateExamenes(examenes)
             }
 
-            viewModel.fetchExamenes()
+            viewModel.fetchExamenes(binding.root)
         }
     }
