@@ -35,34 +35,34 @@ class DatosActivity : AppCompatActivity() {
     private lateinit var examenesViewModel: ExamenesViewModel
 //    private lateinit var bindingDatos: DatosBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityListaDatosBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    super.onCreate(savedInstanceState)
+    binding = ActivityListaDatosBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-        buscarExamenPorNumero()
-        regresar()
-        enviar()
-    }
+    // Initialize ViewModelProvider with the activity's lifecycle
+    examenesViewModel = ViewModelProvider(this)[ExamenesViewModel::class.java]
 
-    private fun buscarExamenPorNumero(){
+    buscarExamenPorNumero()
+    regresar()
+    enviar()
+}
+
+    private fun buscarExamenPorNumero() {
         val examenNumero = intent.getStringExtra("EXAMEN_NUMERO")
-        examenesViewModel = ViewModelProvider(this)[ExamenesViewModel::class.java]
         binding.examen.text = examenNumero
-        val adapter = DatosAdapter(emptyList())
+        val adapter = DatosAdapter(emptyList(),examenesViewModel)
         binding.recyclerView.adapter = adapter
         binding.viewModel = examenesViewModel
         binding.lifecycleOwner = this
 
-
         examenesViewModel.datosList.observe(this) { fetchedDatos ->
             adapter.updateDatos(fetchedDatos)
         }
+
         if (examenNumero != null) {
-            examenesViewModel.fetchDatos(examenNumero,binding.root)
+            examenesViewModel.fetchDatos(examenNumero, binding.root)
         }
-
     }
-
     private fun regresar(){
         binding.backButton.setOnClickListener() {
 

@@ -4,67 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="datosItem"
             type="com.aldaz.lws.data.entitties.lws.DatosItem" />
+        <variable
+            name="viewModel"
+            type="com.aldaz.lws.ui.viewholder.ExamenesViewModel" />
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
         android:layout_marginBottom="8dp"
-        android:elevation="2dp">
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@{datosItem.nombre}"
-                    android:textSize="14sp"
-                    android:paddingEnd="8dp"
-                    android:paddingStart="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@{datosItem.nombre}"
+            android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@{datosItem.referencia}"
-                    android:textSize="14sp"
-                    android:paddingEnd="8dp"
-                    android:paddingStart="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@{datosItem.referencia}"
+            android:textSize="14sp" />
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(datosItem.valor)}"
-                    app:valorOutOfBounds="@{datosItem}"
-                    android:textSize="14sp" />
+        <TextView
+            android:id="@+id/valorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:text="@{String.valueOf(datosItem.valor)}"
+            android:textSize="14sp"
+            app:valorOutOfBounds="@{datosItem}" />
 
 
     </LinearLayout>
 </layout>
 
-<!--<TextView-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@{String.valueOf(datosItem.valMax)}"-->
-<!--android:textSize="14sp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@{String.valueOf(datosItem.valMax)}"-->
+    <!--android:textSize="14sp" />-->
 
-<!--<TextView-->
-<!--android:layout_width="wrap_content"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:text="@{String.valueOf(datosItem.valMin)}"-->
-<!--android:textSize="14sp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@{String.valueOf(datosItem.valMin)}"-->
+    <!--android:textSize="14sp" />-->
 
-<!--<TextView-->
-<!--android:layout_width="0dp"-->
-<!--android:layout_height="wrap_content"-->
-<!--android:layout_weight="1"-->
-<!--android:text="@{datosItem.tipo.nombre}"-->
-<!--android:textSize="14sp"-->
-<!--android:paddingEnd="8dp"-->
-<!--android:paddingStart="8dp"/>-->
+    <!--<TextView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:text="@{datosItem.tipo.nombre}"-->
+    <!--android:textSize="14sp"-->
+    <!--android:paddingEnd="8dp"-->
+    <!--android:paddingStart="8dp"/>-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@{String.valueOf(datosItem.valor)}"-->
+    <!--app:valorOutOfBounds="@{datosItem}"-->
+    <!--android:textSize="14sp"-->
+    <!--android:onClick="@{() -> viewModel.showDialog(root.context, datosItem)}"-->
+    <!--android:layout_gravity="end"-->
+    <!--android:layout_margin="8dp" />-->

@@ -24,9 +24,6 @@
             android:name=".ui.activities.DatosActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.EnviarActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>

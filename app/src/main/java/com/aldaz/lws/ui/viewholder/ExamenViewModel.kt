@@ -1,5 +1,6 @@
 package com.aldaz.lws.ui.viewholder
 
+import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -13,8 +14,11 @@ import com.aldaz.lws.data.entitties.lws.DatosItem
 import com.aldaz.lws.data.entitties.lws.Examen
 import com.aldaz.lws.databinding.ActivityMainBinding
 import com.aldaz.lws.ui.adapters.LwsAdapter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch // Import launch from kotlinx.coroutines
+
+
 
 class ExamenesViewModel : ViewModel() {
 
@@ -75,5 +79,18 @@ class ExamenesViewModel : ViewModel() {
                 Snackbar.make(vista, error, Snackbar.LENGTH_LONG).show()
             }
         }
+    }
+
+    fun showDialog(context: Context, datosItem: DatosItem) {
+        val dialogMessage = "Valor Mínimo: ${datosItem.valMin}\nValor Máximo: ${datosItem.valMax}\n"
+        val alertDialog = MaterialAlertDialogBuilder(context)
+            .setTitle("Referencias de ${datosItem.nombre}")
+            .setMessage(dialogMessage)
+            .setPositiveButton("Cerrar") { dialog, _ ->
+                dialog.dismiss() // Close the dialog
+            }
+            .create()
+
+        alertDialog.show()
     }
 }
