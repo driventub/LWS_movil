@@ -9,60 +9,62 @@
             type="com.aldaz.lws.data.entitties.lws.DatosItem" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="10dp">
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="2dp">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:columnCount="6"
 
-        tools:context=".DetailsActivity">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{datosItem.nombre}"
+                    android:textSize="14sp"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{datosItem.nombre}"
-            android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{datosItem.referencia}"
+                    android:textSize="14sp"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="8dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{datosItem.referencia}"
-            android:textSize="14sp"
 
-            />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(datosItem.valor)}"
+                    app:valorOutOfBounds="@{datosItem}"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{datosItem.tipo.nombre}"
-            android:textSize="14sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(datosItem.valMax)}"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(datosItem.valMin)}"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(datosItem.valor)}"
-            app:valorOutOfBounds="@{datosItem}"
-            android:textSize="14sp" />
-
-    </GridLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 </layout>
+
+<!--<TextView-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:text="@{String.valueOf(datosItem.valMax)}"-->
+<!--android:textSize="14sp" />-->
+
+<!--<TextView-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:text="@{String.valueOf(datosItem.valMin)}"-->
+<!--android:textSize="14sp" />-->
+
+<!--<TextView-->
+<!--android:layout_width="0dp"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_weight="1"-->
+<!--android:text="@{datosItem.tipo.nombre}"-->
+<!--android:textSize="14sp"-->
+<!--android:paddingEnd="8dp"-->
+<!--android:paddingStart="8dp"/>-->

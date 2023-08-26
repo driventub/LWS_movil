@@ -47,7 +47,7 @@ class DatosActivity : AppCompatActivity() {
     private fun buscarExamenPorNumero(){
         val examenNumero = intent.getStringExtra("EXAMEN_NUMERO")
         examenesViewModel = ViewModelProvider(this)[ExamenesViewModel::class.java]
-
+        binding.examen.text = examenNumero
         val adapter = DatosAdapter(emptyList())
         binding.recyclerView.adapter = adapter
         binding.viewModel = examenesViewModel
