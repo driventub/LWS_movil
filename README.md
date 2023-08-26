@@ -1,12 +1,12 @@
 # Laboratory Web Services Móvil (LWS Móvil)
 
-Aplicación basada en Android para gestionar examenes de Laboratorio Clínico
+Aplicación basada en Kotlin para Android para gestionar examenes de Laboratorio Clínico
 
 ## Características
 
 - UI utilizando elelmentos de Material Design 3
 - Arquitectura MVVM
-- Se implemento y se mapeo el proyecto enteramente con el uso de LWS API basada en Java con Springboot y con una base de datos(Vease Utilizar Demo de LWS API con LWS movil)
+- Se implemento y se mapeo el proyecto enteramente con el uso de LWS API basada en Java con Springboot y con una base de datos(Vease [Utilizar Demo de LWS API con LWS movil](#utilizar-demo-de-lws-api-con-lws-movil))
 - Gestiona los examenes que esten disponbles y acceder a los datos pertinentes por medio 
 - Usa un `BindingAdapter` para ver que valores estan fuera del rango del dato y los resalta en la pantalla de [Listado de Datos](#listado-de-datos)
 - Habilitada funcionalidad para enviar reportes por medio de Whatsapp
