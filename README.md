@@ -55,3 +55,4 @@ implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0"
 ![Whatsaa](app/src/main/res/capturas/whatsapp.jpeg)
 
 ## Utilizar Demo de LWS API con LWS movil
+Diríjase a [Releases](https://github.com/driventub/LWS_movil/releases/tag/Alpha)
